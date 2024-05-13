@@ -112,3 +112,60 @@ class WeightedGraph:
                     break  # Break if path is invalid
             # Check if current permutation is shorter than the current shortest path
             if total_distance < shortest_distance:
+                shortest_distance = total_distance
+                shortest_path = path
+
+        return shortest_path, shortest_distance
+
+# Example usage with Dijkstra's algorithm:
+petaJawaTimur = WeightedGraph()
+petaJawaTimur.tambahkanKota("Surabaya")
+petaJawaTimur.tambahkanKota("Gresik")
+petaJawaTimur.tambahkanKota("Sidoarjo")
+petaJawaTimur.tambahkanKota("Lamongan")
+petaJawaTimur.tambahkanKota("Mojokerto")
+petaJawaTimur.tambahkanKota("Pasuruan")
+petaJawaTimur.tambahkanKota("Kediri")
+petaJawaTimur.tambahkanKota("Nganjuk")
+petaJawaTimur.tambahkanKota("Malang")
+petaJawaTimur.tambahkanKota("Blitar")
+
+petaJawaTimur.tambahkanJalan("Surabaya", "Gresik", 21)
+petaJawaTimur.tambahkanJalan("Surabaya", "Sidoarjo", 25)
+petaJawaTimur.tambahkanJalan("Surabaya", "Lamongan", 47)
+petaJawaTimur.tambahkanJalan("Gresik", "Sidoarjo", 42)
+petaJawaTimur.tambahkanJalan("Gresik", "Lamongan", 30)
+petaJawaTimur.tambahkanJalan("Gresik", "Mojokerto", 53)
+petaJawaTimur.tambahkanJalan("Sidoarjo", "Lamongan", 65)
+petaJawaTimur.tambahkanJalan("Sidoarjo", "Mojokerto", 36)
+petaJawaTimur.tambahkanJalan("Sidoarjo", "Pasuruan", 58)
+petaJawaTimur.tambahkanJalan("Lamongan", "Mojokerto", 51)
+petaJawaTimur.tambahkanJalan("Lamongan", "Pasuruan", 121)
+petaJawaTimur.tambahkanJalan("Lamongan", "Kediri", 112)
+petaJawaTimur.tambahkanJalan("Mojokerto", "Pasuruan", 81)
+petaJawaTimur.tambahkanJalan("Mojokerto", "Kediri", 75)
+petaJawaTimur.tambahkanJalan("Mojokerto", "Nganjuk", 66)
+petaJawaTimur.tambahkanJalan("Pasuruan", "Kediri", 134)
+petaJawaTimur.tambahkanJalan("Pasuruan", "Nganjuk", 129)
+petaJawaTimur.tambahkanJalan("Pasuruan", "Malang", 51)
+petaJawaTimur.tambahkanJalan("Kediri", "Nganjuk", 55)
+petaJawaTimur.tambahkanJalan("Kediri", "Malang", 101)
+petaJawaTimur.tambahkanJalan("Kediri", "Blitar", 40)
+petaJawaTimur.tambahkanJalan("Nganjuk", "Malang", 119)
+petaJawaTimur.tambahkanJalan("Nganjuk", "Blitar", 76)
+petaJawaTimur.tambahkanJalan("Nganjuk", "Surabaya", 121)
+petaJawaTimur.tambahkanJalan("Malang", "Blitar", 79)
+petaJawaTimur.tambahkanJalan("Malang", "Surabaya", 89)
+petaJawaTimur.tambahkanJalan("Malang", "Gresik", 105)
+petaJawaTimur.tambahkanJalan("Blitar", "Surabaya", 148)
+petaJawaTimur.tambahkanJalan("Blitar", "Gresik", 151)
+petaJawaTimur.tambahkanJalan("Blitar", "Sidoarjo", 135)
+
+petaJawaTimur.printGraph()
+shortest_distances = petaJawaTimur.dijkstra("Surabaya")
+print("Shortest distances from Surabaya to other cities:")
+for city, distance in shortest_distances.items():
+    print(city, ":", distance)
+shortest_path, shortest_distance = petaJawaTimur.tsp()
+print("Shortest TSP path:", shortest_path)
+print("Shortest TSP distance:", shortest_distance)
